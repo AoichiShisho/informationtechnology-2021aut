@@ -1,0 +1,30 @@
+import pyxel
+import random
+
+class App():
+    def __init__(self):
+        pyxel.init(200, 200)
+        pyxel.sound(0).set(note='C3', tone='T', volume='3', effect='N', speed=30)
+
+        self.play = False
+        pyxel.mouse(True)
+
+        pyxel.run(self.update, self.draw)
+
+    def update(self):
+        if pyxel.btnp(pyxel.KEY_SPACE):
+            self.play = True
+            pyxel.play(0, 0)
+
+
+    def draw(self):
+        if self.play == False:
+            pyxel.cls(0)
+            pyxel.text(80, 80, "Car Game", 7)
+            pyxel.text(80, 100, "Press to Play!", 7)
+
+        if self.play == True:
+            pyxel.cls(0)
+            
+
+App()
